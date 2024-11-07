@@ -22,7 +22,7 @@
     <DOF name="madar/left_forearm_link" value="0.5" />
     <DOF name="madar/left_wrist_1_link" value="0.5" />
     <DOF name="madar/left_wrist_2_link" value="0.5" />
-    <DOF name="madar/left_wrist_3_link" value="0.5" />
+    <DOF name="madar/left_wrist_3_link" value="0.0" />
 
     <!-- Set the offsets for the Allegro Right Hand Fingers -->
     <!-- Index Finger -->
@@ -82,5 +82,7 @@
   <Control name="madar/y" eigValue="1.0">
     <DOF name="madar/Y" value="1.0" />
   </Control>
-
+  <Control name="RZ" eigValue="1.0">
+     <DOF name="madar/X3" value="1.0"></DOF>
+  </Control>
 </ControlSet>

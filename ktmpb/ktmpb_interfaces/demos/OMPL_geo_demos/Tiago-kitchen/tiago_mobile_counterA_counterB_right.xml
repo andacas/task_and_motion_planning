@@ -10,11 +10,12 @@
 	<Obstacle obstacle="obstacles/kitchen/can.urdf" scale="1">
 		<Home TH="0" WZ="0.0" WY="0.0" WX="1.0" Z="0.91" Y="0" X="1.1" />
 	</Obstacle>
-        <!-- Yellow can -->
+        <!-- Yellow can 
 
 	<Obstacle obstacle="obstacles/kitchen/cangoal.urdf" scale="1">
 		<Home TH="0" WZ="0.0" WY="0.0" WX="1.0" Z="0.90" Y="-0.3" X="1.4" />
 	</Obstacle>
+	
 	<Obstacle obstacle="obstacles/kitchen/glass.urdf" scale="1">
 		<Home TH="0" WZ="0.0" WY="0.0" WX="1.0" Z="0.90" Y="-0.3" X="1.2" />
 	</Obstacle>
@@ -27,6 +28,15 @@
 	<Obstacle obstacle="obstacles/kitchen/kitchen.urdf" scale="1">
 		<Home TH="0" WZ="0.0" WY="0.0" WX="1.0" Z="0.0" Y="0" X="0" />
 	</Obstacle>
+	-->
+	<Obstacle obstacle="obstacles/kitchen/round_table.urdf" scale="0.001">
+		<Home TH="1.57" WZ="0.0" WY="0.0" WX="1.0" Z="0.0" Y="-0.05" X="1.8" />
+	</Obstacle>
+
+	<Obstacle obstacle="obstacles/kitchen/kitchenfloor.urdf" scale="1">
+		<Home TH="0" WZ="0.0" WY="0.0" WX="1.0" Z="-0.001" Y="0" X="0" />
+	</Obstacle>
+
         <!-- controls to move the base in X, Y, and RZ with offsets of the arm joints set
         to make the arm be folded -->
 	<Controls robot="controls/tiago_simple_only_mobile.cntr" />

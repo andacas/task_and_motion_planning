@@ -6,7 +6,6 @@ import sys
 import rclpy
 from rclpy.node import Node
 from ament_index_python.packages import get_package_share_directory
-
 from downward_interfaces.srv import Plan
 import pathlib
 
@@ -55,27 +54,68 @@ def main():
     print("---------- DomainFile -------------")
     print(strDomainFile)
 
+    # 1. Default Fast Downward with FF heuristic (emulating FF planner)
+    evaluator = ""  # Defaults to "hff=ff()"
+    search = ""     # Defaults to "lazy_greedy([hff], preferred=[hff])"
     print("------ CALLING fast-downward as FF -------")
-    #evaluator="\"hff=ff()\""
-    #search="\"lazy_greedy([hff], preferred=[hff])\""
-    #evaluator and search can be left empty for FF since the downward server fills them with the ff info
-    evaluator = ""
-    search = ""
     r = my_downward_client.send_request(strProblemFile, strDomainFile, evaluator, search)
-    if(r.response==True):
-        print("Solution plan is: ", r.plan)
-    else:
-        print(r.plan)
-        
-    print("------ CALLING fast-downward using context-enhanced additive heuristic -------")
-    evaluator = "\"hcea=cea()\""
-    search = "\"lazy_greedy([hcea], preferred=[hcea])\""
-    r = my_downward_client.send_request(strProblemFile, strDomainFile, evaluator, search)
-    if(r.response==True):
+    if r.response:
         print("Solution plan is: ", r.plan)
     else:
         print(r.plan)
 
+    # 2. Context-Enhanced Additive Heuristic with Lazy Greedy Search
+    print("------ CALLING fast-downward using context-enhanced additive heuristic -------")
+    evaluator = "\"hcea=cea()\""
+    search = "\"lazy_greedy([hcea], preferred=[hcea])\""
+    r = my_downward_client.send_request(strProblemFile, strDomainFile, evaluator, search)
+    if r.response:
+        print("Solution plan is: ", r.plan)
+    else:
+        print(r.plan)
+
+    # 3. Lazy Weighted A with Context-Enhanced Additive Heuristic (CEA) and Preferred Operators*
+    print("------ CALLING Eager Greedy Best-First Search with Preferred Operators -------")
+    evaluator = "\"hff=ff()\""  # FF heuristic for efficient planning
+    search = "\"eager_greedy([hff], preferred=[hff], boost=100)\""
+    r = my_downward_client.send_request(strProblemFile, strDomainFile, evaluator, search)
+    if r.response:
+        print("Solution plan is: ", r.plan)
+    else:
+        print(r.plan)
+
+    # 4. Lazy Weighted A with Context-Enhanced Additive Heuristic (CEA) and Preferred Operators*
+    print("------ CALLING Lazy Weighted A Search with Preferred Operators -------")
+    evaluator = "\"hcea=cea()\""  # context-enhanced additive heuristic for broader contextual awareness
+    search = "\"lazy_wastar([hcea], preferred=[hcea], w=2, reopen_closed=true)\""
+    r = my_downward_client.send_request(strProblemFile, strDomainFile, evaluator, search)
+    if r.response:
+        print("Solution plan is: ", r.plan)
+    else:
+        print(r.plan)
+
+
+
+    # 5. Lazy Weighted A with Context-Enhanced Additive Heuristic (CEA) and Preferred Operators*
+    print("------ CALLING the landmark heuristic combined with goal-counting within a lazy weighted A* search strategy. -------")
+    evaluator = "\"goalcount=goalcount()\""
+    search = "\"lazy_greedy([goalcount], preferred=[goalcount])\""
+
+    r = my_downward_client.send_request(strProblemFile, strDomainFile, evaluator, search)
+    if r.response:
+        print("Solution plan is: ", r.plan)
+    else:
+        print(r.plan)
+        
+    # 5. Lazy Weighted A with Context-Enhanced Additive Heuristic (CEA) and Preferred Operators*
+    print("------ CALLING the landmark heuristic combined with goal-counting within a lazy weighted A* search strategy. -------")
+    evaluator = "\"lmcut=lmcut()\""
+    search = "\"lazy_wastar([lmcut], w=2, reopen_closed=true)\""
+    r = my_downward_client.send_request(strProblemFile, strDomainFile, evaluator, search)
+    if r.response:
+        print("Solution plan is: ", r.plan)
+    else:
+        print(r.plan)
     my_downward_client.destroy_node()
     rclpy.shutdown()
 

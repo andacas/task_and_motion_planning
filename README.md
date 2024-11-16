@@ -1,39 +1,75 @@
-# Task_and_motion_planning2
+# Task_and_motion_planning
 
-This meta-repository contains:
+here i have to do a short description of the repo 
 
-- module **downward_ros**: package that wraps the Fast-Downward set of task planners - (using **ros2** branch)
+## Problem description
 
-- module **kautham_interfaces**: package that wraps the calls to the Kautham services
+the Mobile Anthropomorphic Dual-Arm Robot (MADAR) is going to be place in a sceneario were he is a bartender and has to serve multiple drinks to people at differents locations in the bar 
 
-- module **ktmpb**: package that uses the Fast-Downward and Katham services to plan at task and motion levels - (using **ros2** branch)
+we are going to analize 2 specific situations in this sceneario to test the capability of the robot:
+- 4 drinks requested in different tables
+- 3 drinks requested in different tables 
 
-## Clone and build
+## Creating sceneario in kautham
+
+The first thing is making the 3d models that kautham can load (.obj , .dae) we have used blender to create this models and export them in .dae 
+
+bar: done 
+
+glass: done 
+
+bottle: done
+
+once the models were created we need to add them to the scenario as urdf files so we create an urdf file for all the objects in the scene  the urdf are located in the ktmpb_interfaces/demos/models/obstacles 
+
+structure of a urdf file that the kautham can read 
 ```
-$ mkdir -p colcon_ws/src
-$ cd colcon_ws/src
-$ git clone  --recurse-submodules https://gitioc.upc.edu/rostutorials/task_and_motion_planning2.git
-$ cd ..
-$ colcon build
+<?xml version="1.0"?>
+<robot name="OBJ">
+	<link name="base">
+	<inertial>
+       </inertial>
+	<visual>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<geometry>
+       			 <mesh filename="mesh.dae" scale="0 0 0"/>
+      		</geometry>
+		<material>
+			<color rgba="1 1 1 1" />
+		</material>
+		</visual>
+  	 <collision>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+       			 <mesh filename="mesh.dae" scale="0 0 0"/>
+            </geometry>
+	    <material>
+			<color rgba="1 1 1 1" />
+	    </material>
+        </collision>
+	</link>
+</robot>
 ```
 
-## Test
-The **ktmpb** package has a demo folder called *task_and_motion_planning2/ktmpb/ktmpb_interfaces/demos/* that is installed in *install/ktmpb_interfaces/share/ktmpb_interfaces/demos/*.
 
-To test the task and motion planning client launch the following file:
+we modify the xacro from the madar description to be a single urdf that contains all the parts of the MADAR and also removed all the gazebo specific tags that are no require  
 
-```
-$ ros2 launch ktmpb_client table_rooms_a.launch.py
-```
 
-This example uses the task and motion planning configuration file **tampconfig_a.xml** in the folder *demos/OMPL_geo_demos/Table_Rooms_R2*, where the following PDDL files and Kautham files to be used are defined:
+then under OMPL_geo_demos/madar_bar/controls  define the control set of the robot all the posible joints we can rotate we can define and initial offset and the joints we want to move right now 
 
-    - pddldomain file: "ff-domains/manipulationdomain.pddl"
-    - pddlproblem file "ff-domains/manipulation_problem_A"
-    - kautham file: "OMPL_RRTconnect_table_rooms_R2_a.xml"
+finally we can add all the files to the problem.xml adding all the urdf to create the sceneario the robot and the controller and also defining the planner with and initial joint configuration and ending configuration 
 
-The resulting file (in the folder *install/ktmpb_interfaces/share/ktmpb_interfaces/demos/*) is called:
+add figure of the MADAR at the Bar
 
-    - taskfile_tampconfig_a.xml
 
-Open the *OMPL_RRTconnect_table_rooms_R2_a.xml* prioblem using the Kautham GUI and then load and run the taskfile.
+---
+
+## Road map 
+
+- [X] Define the problem
+- [X] Create kautham sceneario (models, urdf, and xml files)
+- [ ] Define zones and waypoints the robot can travel 
+- [X] Task planning create domain.pddl
+- [X] task planning create problem.pddl 
+- [ ] Benchmark task planners to select the best solution
+- [ ] combine task and motion planner 

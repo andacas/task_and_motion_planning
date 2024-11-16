@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<ControlSet>
+  <Offset>
+    <!-- Set the base pose offsets -->
+    <DOF name="madar/X" value="0.5" />
+    <DOF name="madar/Y" value="0.5" />
+    <DOF name="madar/X1" value="0.0" />
+    <DOF name="madar/X2" value="0.0" />
+    <DOF name="madar/X3" value="0.25" />
+    
+    <!-- Set the home configuration offsets for the right UR arm joints -->
+    <DOF name="madar/right_shoulder_link" value="0.5" />
+    <DOF name="madar/right_upper_arm_link" value="0.25" />
+    <DOF name="madar/right_forearm_link" value="0.5" />
+    <DOF name="madar/right_wrist_1_link" value="0.25" />
+    <DOF name="madar/right_wrist_2_link" value="0.5" />
+    <DOF name="madar/right_wrist_3_link" value="0.5" />
+    
+    <!-- Set the home configuration offsets for the left UR arm joints -->
+    <DOF name="madar/left_shoulder_link" value="0.5" />
+    <DOF name="madar/left_upper_arm_link" value="0.166" />
+    <DOF name="madar/left_forearm_link" value="0.5" />
+    <DOF name="madar/left_wrist_1_link" value="0.5" />
+    <DOF name="madar/left_wrist_2_link" value="0.5" />
+    <DOF name="madar/left_wrist_3_link" value="0.0" />
+
+    <!-- Set the offsets for the Allegro Right Hand Fingers -->
+    <!-- Index Finger -->
+    <DOF name="madar/right_link_0_0" value="0.0" />
+    <DOF name="madar/right_link_1_0" value="0.0" />
+    <DOF name="madar/right_link_2_0" value="0.0" />
+    <DOF name="madar/right_link_3_0" value="0.0" />
+    
+    <!-- Middle Finger -->
+    <DOF name="madar/right_link_4_0" value="0.0" />
+    <DOF name="madar/right_link_5_0" value="0.0" />
+    <DOF name="madar/right_link_6_0" value="0.0" />
+    <DOF name="madar/right_link_7_0" value="0.0" />
+    
+    <!-- Ring Finger -->
+    <DOF name="madar/right_link_8_0" value="0.0" />
+    <DOF name="madar/right_link_9_0" value="0.0" />
+    <DOF name="madar/right_link_10_0" value="0.0" />
+    <DOF name="madar/right_link_11_0" value="0.0" />
+    
+    <!-- Thumb Finger -->
+    <DOF name="madar/right_link_12_0" value="0.0" />
+    <DOF name="madar/right_link_13_0" value="0.0" />
+    <DOF name="madar/right_link_14_0" value="0.0" />
+    <DOF name="madar/right_link_15_0" value="0.0" />
+    
+    <!-- Set the offsets for the Allegro Left Hand Fingers -->
+    <!-- Left Index Finger -->
+    <DOF name="madar/left_link_0_0" value="0.0" />
+    <DOF name="madar/left_link_1_0" value="0.0" />
+    <DOF name="madar/left_link_2_0" value="0.0" />
+    <DOF name="madar/left_link_3_0" value="0.0" />
+    
+    <!-- Left Middle Finger -->
+    <DOF name="madar/left_link_4_0" value="0.0" />
+    <DOF name="madar/left_link_5_0" value="0.0" />
+    <DOF name="madar/left_link_6_0" value="0.0" />
+    <DOF name="madar/left_link_7_0" value="0.0" />
+    
+    <!-- Left Ring Finger -->
+    <DOF name="madar/left_link_8_0" value="0.0" />
+    <DOF name="madar/left_link_9_0" value="0.0" />
+    <DOF name="madar/left_link_10_0" value="0.0" />
+    <DOF name="madar/left_link_11_0" value="0.0" />
+    
+    <!-- Left Thumb Finger -->
+    <DOF name="madar/left_link_12_0" value="0.0" />
+    <DOF name="madar/left_link_13_0" value="0.0" />
+    <DOF name="madar/left_link_14_0" value="0.0" />
+    <DOF name="madar/left_link_15_0" value="0.0" />
+  </Offset>
+
+  <!-- Define the controls for the base -->
+  <Control name="madar/x" eigValue="1.0">
+    <DOF name="madar/X" value="1.0" />
+  </Control>
+  <Control name="madar/y" eigValue="1.0">
+    <DOF name="madar/Y" value="1.0" />
+  </Control>
+  <Control name="RZ" eigValue="1.0">
+     <DOF name="madar/X3" value="1.0"></DOF>
+  </Control>
+</ControlSet>

@@ -60,18 +60,18 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
             'problem',
-            default_value='block_world',
+            default_value='madar_problem',
             #choices=('block_world', 'block_world_2', 'block_world_3', 'chess_world', 'chess_world_2', 'chess_world_3', 'etc...'),
-            description='file name of a problem that uses the defined domain, e.g. problem:=block_world for the block_world domain or problem:=my_chess_world_problem for the chess_world domain',
+            description='file name of a problem that uses the defined domain, e.g. problem:=madar_world for the madar_world domain or problem:=my_chess_world_problem for the chess_world domain',
         )
     )
 
     declared_arguments.append(
         DeclareLaunchArgument(
             'domain',
-            default_value='block_world',
+            default_value='madar_world',
             #choices=('block_world', 'chess_world'),
-            description='domain file name, without the .pddl extension!!, e.g. domain:=block_world or domain:=chess_world',
+            description='domain file name, without the .pddl extension!!, e.g. domain:=madar_world or domain:=chess_world',
         )
     )
 

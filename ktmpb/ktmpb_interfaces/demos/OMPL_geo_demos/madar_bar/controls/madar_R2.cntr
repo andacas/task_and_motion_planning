@@ -8,22 +8,27 @@
     <DOF name="madar/X2" value="0.0" />
     <DOF name="madar/X3" value="0.25" />
     
+     <!-- Set the home configuration offsets for the right UR arm joints -->
+    <!--  0.55  0.5   0.87  0.25  0.45  0.25  0.45  0.58  0.13   0.5  0.5  0.7-->
+    <!-- +0.05 +0.0  +0.37 -0.25 -0.05 -0.25 -0.05  +0.08 -0.37  0.0  0.0 +0.2-->
+    <!--  0.5   0.25  0.5   0.25  0.5   0.5   0.5   0.166  0.5  0.5  0.5  0.0-->
+    
+    <!--  0.55  0.25  0.87  0.0   0.45  0.25  0.45  0.246  0.13 0.5 0.5 0.2-->
     <!-- Set the home configuration offsets for the right UR arm joints -->
-    <DOF name="madar/right_shoulder_link" value="0.5" />
+    <DOF name="madar/right_shoulder_link" value="0.55" />
     <DOF name="madar/right_upper_arm_link" value="0.25" />
-    <DOF name="madar/right_forearm_link" value="0.5" />
-    <DOF name="madar/right_wrist_1_link" value="0.25" />
-    <DOF name="madar/right_wrist_2_link" value="0.5" />
-    <DOF name="madar/right_wrist_3_link" value="0.5" />
+    <DOF name="madar/right_forearm_link" value="0.87" />
+    <DOF name="madar/right_wrist_1_link" value="0.0" />
+    <DOF name="madar/right_wrist_2_link" value="0.45" />
+    <DOF name="madar/right_wrist_3_link" value="0.25" />
     
     <!-- Set the home configuration offsets for the left UR arm joints -->
-    <DOF name="madar/left_shoulder_link" value="0.5" />
-    <DOF name="madar/left_upper_arm_link" value="0.166" />
-    <DOF name="madar/left_forearm_link" value="0.5" />
+    <DOF name="madar/left_shoulder_link" value="0.45" />
+    <DOF name="madar/left_upper_arm_link" value="0.246" />
+    <DOF name="madar/left_forearm_link" value="0.13" />
     <DOF name="madar/left_wrist_1_link" value="0.5" />
     <DOF name="madar/left_wrist_2_link" value="0.5" />
-    <DOF name="madar/left_wrist_3_link" value="0.0" />
-
+    <DOF name="madar/left_wrist_3_link" value="0.2" />
     <!-- Set the offsets for the Allegro Right Hand Fingers -->
     <!-- Index Finger -->
     <DOF name="madar/right_link_0_0" value="0.0" />

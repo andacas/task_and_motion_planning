@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<Config>
+  <Problemfiles>
+      <pddldomain name="ff-domains/madar_world.pddl" />
+      <pddlproblem name="ff-domains/travel-to-shelf" />
+      <kautham name="OMPL_RRTconnect_madar_case_move_a_b.xml" />
+      <directory name="/demos/OMPL_geo_demos/madar_bar/"/>
+      <graspit name="DUMMY NO GRASPIT TO BE USED HERE"/>
+  </Problemfiles>
+  <States>
+      <!-- Initial state with robot at HOME position -->
+      <Initial>
+          <!-- Robot's initial configuration (controlfile can be adjusted as per your setup) -->
+          <Robot name="MADAR" controlfile="controls/madar_R2.cntr"> 0.5 0.5 0.5 </Robot>
+      </Initial>
+  </States>
+  <Actions>
+      <!-- Define Move actions between all connected pairs -->
+
+      <!-- Move actions between HOME and PREPARATION-TABLE -->
+      <Move robot="MADAR" region_from="HOME" region_to="PREPARATION-TABLE">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.5 0.5 0.5 </InitControls>
+          <GoalControls> 0.8 0.3 0.0 </GoalControls>
+      </Move>
+      <Move robot="MADAR" region_from="PREPARATION-TABLE" region_to="HOME">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.8 0.3 0.0 </InitControls>
+          <GoalControls> 0.5 0.5 0.5 </GoalControls>
+      </Move>
+
+      <!-- Move actions between HOME and SHELF -->
+      <Move robot="MADAR" region_from="HOME" region_to="SHELF">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.5 0.5 0.5 </InitControls>
+          <GoalControls> 0.75 0.75 0.25 </GoalControls>
+      </Move>
+      <Move robot="MADAR" region_from="SHELF" region_to="HOME">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.75 0.75 0.25 </InitControls>
+          <GoalControls> 0.5 0.5 0.5 </GoalControls>
+      </Move>
+
+      <!-- Move actions between SHELF and PREPARATION-TABLE -->
+      <Move robot="MADAR" region_from="SHELF" region_to="PREPARATION-TABLE">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.75 0.75 0.25 </InitControls>
+          <GoalControls> 0.8 0.3 0.0 </GoalControls>
+      </Move>
+      <Move robot="MADAR" region_from="PREPARATION-TABLE" region_to="SHELF">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.8 0.3 0.0 </InitControls>
+          <GoalControls> 0.75 0.75 0.25 </GoalControls>
+      </Move>
+
+      <!-- Move actions between HOME and TABLE1 -->
+      <Move robot="MADAR" region_from="HOME" region_to="TABLE1">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.5 0.5 0.5 </InitControls>
+          <GoalControls> 0.5 0.25 0.75 </GoalControls>
+      </Move>
+      <Move robot="MADAR" region_from="TABLE1" region_to="HOME">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.5 0.25 0.75 </InitControls>
+          <GoalControls> 0.5 0.5 0.5 </GoalControls>
+      </Move>
+
+      <!-- Move actions between HOME and TABLE2 -->
+      <Move robot="MADAR" region_from="HOME" region_to="TABLE2">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.5 0.5 0.5 </InitControls>
+          <GoalControls> 0.25 0.25 0.5 </GoalControls>
+      </Move>
+      <Move robot="MADAR" region_from="TABLE2" region_to="HOME">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.25 0.25 0.5 </InitControls>
+          <GoalControls> 0.5 0.5 0.5 </GoalControls>
+      </Move>
+
+      <!-- Move actions between HOME and TABLE3 -->
+      <Move robot="MADAR" region_from="HOME" region_to="TABLE3">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.5 0.5 0.5 </InitControls>
+          <GoalControls> 0.25 0.75 0.5 </GoalControls>
+      </Move>
+      <Move robot="MADAR" region_from="TABLE3" region_to="HOME">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.25 0.75 0.5 </InitControls>
+          <GoalControls> 0.5 0.5 0.5 </GoalControls>
+      </Move>
+
+      <!-- Move actions between HOME and TABLE4 -->
+      <Move robot="MADAR" region_from="HOME" region_to="TABLE4">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.5 0.5 0.5 </InitControls>
+          <GoalControls> 0.5 0.75 0.25 </GoalControls>
+      </Move>
+      <Move robot="MADAR" region_from="TABLE4" region_to="HOME">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.8 0.8 0.5 </InitControls>
+          <GoalControls> 0.5 0.75 0.25 </GoalControls>
+      </Move>
+
+      <!-- Move actions between TABLE1 and TABLE2 -->
+      <Move robot="MADAR" region_from="TABLE1" region_to="TABLE2">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.5 0.25 0.75 </InitControls>
+          <GoalControls> 0.25 0.25 0.5 </GoalControls>
+      </Move>
+      <Move robot="MADAR" region_from="TABLE2" region_to="TABLE1">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.25 0.25 0.5 </InitControls>
+          <GoalControls> 0.5 0.25 0.75 </GoalControls>
+      </Move>
+
+      <!-- Move actions between TABLE1 and TABLE3 -->
+      <Move robot="MADAR" region_from="TABLE1" region_to="TABLE3">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.5 0.25 0.75 </InitControls>
+          <GoalControls> 0.25 0.75 0.5 </GoalControls>
+      </Move>
+      <Move robot="MADAR" region_from="TABLE3" region_to="TABLE1">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.25 0.75 0.5 </InitControls>
+          <GoalControls> 0.5 0.25 0.75 </GoalControls>
+      </Move>
+
+      <!-- Move actions between TABLE1 and TABLE4 -->
+      <Move robot="MADAR" region_from="TABLE1" region_to="TABLE4">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.5 0.25 0.75 </InitControls>
+          <GoalControls> 0.5 0.75 0.25 </GoalControls>
+      </Move>
+      <Move robot="MADAR" region_from="TABLE4" region_to="TABLE1">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.5 0.75 0.25 </InitControls>
+          <GoalControls> 0.5 0.25 0.75 </GoalControls>
+      </Move>
+
+      <!-- Move actions between TABLE2 and TABLE3 -->
+      <Move robot="MADAR" region_from="TABLE2" region_to="TABLE3">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.25 0.25 0.5 </InitControls>
+          <GoalControls> 0.25 0.75 0.5 </GoalControls>
+      </Move>
+      <Move robot="MADAR" region_from="TABLE3" region_to="TABLE2">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.25 0.75 0.5 </InitControls>
+          <GoalControls> 0.25 0.25 0.5 </GoalControls>
+      </Move>
+
+      <!-- Move actions between TABLE2 and TABLE4 -->
+      <Move robot="MADAR" region_from="TABLE2" region_to="TABLE4">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.25 0.25 0.5 </InitControls>
+          <GoalControls> 0.5 0.75 0.25 </GoalControls>
+      </Move>
+      <Move robot="MADAR" region_from="TABLE4" region_to="TABLE2">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.5 0.75 0.25 </InitControls>
+          <GoalControls> 0.25 0.25 0.5 </GoalControls>
+      </Move>
+
+      <!-- Move actions between TABLE3 and TABLE4 -->
+      <Move robot="MADAR" region_from="TABLE3" region_to="TABLE4">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.25 0.75 0.5 </InitControls>
+          <GoalControls> 0.5 0.75 0.25 </GoalControls>
+      </Move>
+      <Move robot="MADAR" region_from="TABLE4" region_to="TABLE3">
+          <Rob> 0 </Rob>
+          <Cont> controls/madar_R2.cntr </Cont>
+          <InitControls> 0.5 0.75 0.25 </InitControls>
+          <GoalControls> 0.25 0.75 0.5 </GoalControls>
+      </Move>
+
+  </Actions>
+</Config>

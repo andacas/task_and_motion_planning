@@ -60,7 +60,7 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
             'problem',
-            default_value='madar_problem',
+            default_value='travel-to-shelf',
             #choices=('block_world', 'block_world_2', 'block_world_3', 'chess_world', 'chess_world_2', 'chess_world_3', 'etc...'),
             description='file name of a problem that uses the defined domain, e.g. problem:=madar_world for the madar_world domain or problem:=my_chess_world_problem for the chess_world domain',
         )

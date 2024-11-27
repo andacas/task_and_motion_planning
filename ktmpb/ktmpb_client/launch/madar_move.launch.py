@@ -53,7 +53,7 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
             'tampconfigfile',
-            default_value="/demos/OMPL_geo_demos/Tiago-kitchen/tampconfig_no_pose_right.xml",
+            default_value="/demos/OMPL_geo_demos/madar_bar/tampconfig_move.xml",
             description='launches the ktmpb client with the files set in the tampconfig file.',
         )
     )

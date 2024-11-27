@@ -1,0 +1,100 @@
+(define (problem travel-to-shelf)
+  (:domain robot_bartender)
+
+  (:objects
+    ; Robot and hands
+    madar - robot
+    left-hand right-hand - hand
+
+    ; Zones
+    home shelf preparation-table table1 table2 table3 table4 - location
+
+    ; Sections
+    table1-left table1-right
+    table2-left table2-right
+    table3-left table3-right
+    table4-left table4-right
+    prep-section1 prep-section2 prep-section3 prep-section4
+    shelf-section1 shelf-section2 shelf-section3 shelf-section4
+    - section
+
+    ; Glasses
+    glass-w1 glass-w2 - glass  ; Whiskey glasses
+    glass-v1 glass-v2 - glass  ; Wine glasses
+  )
+
+  (:init
+  ; Initial robot location
+  (at madar shelf)
+
+  ; Section and zone associations
+  (section-of shelf-section1 shelf)
+  (section-of shelf-section2 shelf)
+  (section-of shelf-section3 shelf)
+  (section-of shelf-section4 shelf)
+  (section-of table1-left table1)
+  (section-of table1-right table1)
+  (section-of table2-left table2)
+  (section-of table2-right table2)
+  (section-of table3-left table3)
+  (section-of table3-right table3)
+  (section-of table4-left table4)
+  (section-of table4-right table4)
+  (section-of prep-section1 preparation-table)
+  (section-of prep-section2 preparation-table)
+  (section-of prep-section3 preparation-table)
+  (section-of prep-section4 preparation-table)
+
+  ; Glasses on the shelf
+  (in-section glass-w1 shelf-section1)
+  (in-section glass-w2 shelf-section2)
+  (in-section glass-v1 shelf-section3)
+  (in-section glass-v2 shelf-section4)
+
+  ; Hands are free
+  (free-hand left-hand)
+  (free-hand right-hand)
+
+  ; Connectivity between zones
+  ; Home is connected with preparation-table and shelf
+  (connected home preparation-table)
+  (connected home shelf)
+
+  (connected preparation-table home)
+  (connected shelf home)
+  
+  ; Shelf and preparation-table are connected
+  (connected shelf preparation-table)
+  (connected preparation-table shelf)
+
+  ; All tables are connected with each other and with home
+  (connected home table1)
+  (connected home table2)
+  (connected home table3)
+  (connected home table4)
+
+  (connected table1 table2)
+  (connected table1 table3)
+  (connected table1 table4)
+  (connected table1 home)
+
+  (connected table2 table1)
+  (connected table2 table4)
+  (connected table2 table3)
+  (connected table2 home)
+
+  (connected table3 table1)
+  (connected table3 table2)
+  (connected table3 table4)
+  (connected table3 home)
+
+  (connected table4 table1)
+  (connected table4 table2)
+  (connected table4 table3)
+  (connected table4 home)
+  )
+
+  (:goal
+    (at madar table1)
+  )
+)

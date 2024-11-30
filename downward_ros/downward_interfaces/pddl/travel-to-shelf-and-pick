@@ -89,14 +89,16 @@
     (connected TABLE4 TABLE2)
     (connected TABLE3 TABLE4)
     (connected TABLE4 TABLE3)
+
+    ; Additional initial conditions as needed
   )
 
   (:goal
     (and
-      ; Goal: Robot is at SHELF and both hands are at specified sections
+      ; Goal: Robot is at SHELF and hands are at specified sections
       (at MADAR SHELF)
       (hand-at LEFT-HAND SHELF_L_1)
-      (hand-at RIGHT-HAND SHELF_R_2)
+      (hand-at RIGHT-HAND SHELF_R_1)
     )
   )
 )

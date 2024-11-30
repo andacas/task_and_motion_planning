@@ -205,7 +205,7 @@
           <Cont> controls/madar_left_arm.cntr </Cont>
           <!-- Base X, Y, Z, followed by 6 arm joint angles -->
           <InitControls> 0.45 0.58 0.13 0.5 0.5 0.7 </InitControls>
-          <GoalControls> 0.24 0.395 0.274 0.620 0.774 0.632</GoalControls>
+          <GoalControls> 0.75 0.75 0.25 0.240 0.395 0.274 0.620 0.774 0.632 </GoalControls>
       </Approach_section>
 
       <!-- Repeat for each section with the corresponding joint values -->
@@ -215,7 +215,7 @@
           <Rob> 0 </Rob>
           <Cont> controls/madar_left_arm.cntr </Cont>
           <InitControls> 0.45 0.58 0.13 0.5 0.5 0.7 </InitControls>
-          <GoalControls> 0.282 0.305 0.357 0.530 0.805 0.579 </GoalControls>
+          <GoalControls> 0.75 0.75 0.25 0.282 0.305 0.357 0.530 0.805 0.579 </GoalControls>
       </Approach_section>
 
       <!-- Approach-Section action for LEFT-HAND at SHELF_L_3 -->
@@ -223,7 +223,7 @@
           <Rob> 0 </Rob>
           <Cont> controls/madar_left_arm.cntr </Cont>
           <InitControls> 0.45 0.58 0.13 0.5 0.5 0.7 </InitControls>
-          <GoalControls> 0.338 0.477 0.293 0.541 0.688 0.624 </GoalControls>
+          <GoalControls> 0.75 0.75 0.25 0.338 0.477 0.293 0.541 0.688 0.624 </GoalControls>
       </Approach_section>
 
       <!-- Approach-Section action for LEFT-HAND at SHELF_L_4 -->
@@ -231,7 +231,7 @@
           <Rob> 0 </Rob>
           <Cont> controls/madar_left_arm.cntr </Cont>
           <InitControls> 0.45 0.58 0.13 0.5 0.5 0.7 </InitControls>
-          <GoalControls>  0.368 0.383 0.387 0.541 0.688 0.624</GoalControls>
+          <GoalControls> 0.75 0.75 0.25 0.368 0.383 0.387 0.541 0.688 0.624 </GoalControls>
       </Approach_section>
 
       <!-- Approach-Section action for RIGHT-HAND at SHELF_R_1 -->
@@ -239,7 +239,7 @@
           <Rob> 0 </Rob>
           <Cont> controls/madar_right_arm.cntr </Cont>
           <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 </InitControls>
-          <GoalControls> 0.703 0.895 0.402 0.267 0.229 0.376</GoalControls>
+          <GoalControls> 0.75 0.75 0.25 0.703 0.895 0.402 0.267 0.229 0.376 </GoalControls>
       </Approach_section>
 
       <!-- Approach-Section action for RIGHT-HAND at SHELF_R_2 -->
@@ -247,7 +247,7 @@
           <Rob> 0 </Rob>
           <Cont> controls/madar_right_arm.cntr </Cont>
           <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 </InitControls>
-          <GoalControls> 0.741 0.906 0.335 0.244 0.241 0.436</GoalControls>
+          <GoalControls> 0.75 0.75 0.25 0.741 0.906 0.335 0.244 0.241 0.436 </GoalControls>
       </Approach_section>
 
       <!-- Approach-Section action for RIGHT-HAND at SHELF_R_3 -->
@@ -255,7 +255,7 @@
           <Rob> 0 </Rob>
           <Cont> controls/madar_right_arm.cntr </Cont>
           <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 </InitControls>
-          <GoalControls> 0.643 0.756 0.511 0.282 0.226 0.346</GoalControls>
+          <GoalControls> 0.75 0.75 0.25 0.643 0.756 0.511 0.282 0.226 0.346 </GoalControls>
       </Approach_section>
 
       <!-- Approach-Section action for RIGHT-HAND at SHELF_R_4 -->
@@ -263,21 +263,7 @@
           <Rob> 0 </Rob>
           <Cont> controls/madar_right_arm.cntr </Cont>
           <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 </InitControls>
-          <GoalControls> 0.673 0.624 0.684 0.233 0.226 0.372</GoalControls>
+          <GoalControls> 0.75 0.75 0.25 0.673 0.624 0.684 0.233 0.226 0.372 </GoalControls>
       </Approach_section>
-
-              <!-- New Action: Approach_Sections_2_Arms -->
-      <Approachsections2arms robot="MADAR" hand1="LEFT-HAND" hand2="RIGHT-HAND" location="SHELF" section1="SHELF_L_1" section2="SHELF_R_2">
-          <Rob> 0 </Rob>
-          <Cont>controls/madar_both_arms.cntr</Cont>
-          <!-- Base X, Y, Z, followed by arm joint angles for both arms -->
-          <!-- Left arm joint values for SHELF_L_1 -->
-          <!-- Right arm joint values for SHELF_R_2 0.24 0.395 0.274 0.620 0.774 0.632 0.741 0.906 0.335 0.244 0.241 0.436		
-          		<Init>0.5 0.5 0.5 0.55 0.5 0.87 0.25 0.45 0.25 0.45 0.58 0.13 0.5 0.5 0.7</Init>
-				<Goal>0.5 0.5 0.5 0.55 0.5 0.87 0.25 0.45 0.25 0.45 0.58 0.13 0.5 0.5 0.7</Goal>-->
-          <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 0.45 0.58 0.13 0.5 0.5 0.7</InitControls>
-          <GoalControls> 0.741 0.906 0.335 0.244 0.241 0.436 0.338 0.477 0.293 0.541 0.688 0.624</GoalControls>
-      </Approachsections2arms>
   </Actions>
-
 </Config>

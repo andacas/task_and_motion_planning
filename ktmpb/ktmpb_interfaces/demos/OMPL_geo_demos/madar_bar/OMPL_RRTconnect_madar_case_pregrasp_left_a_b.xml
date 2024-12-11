@@ -6,52 +6,43 @@
 		<Limits name="Z" min="0.0" max="0.0" />
 		<Home X="0.0" Y="0.0" Z="0.0" WX="0.0" WY="0.0" WZ="1.0" TH="0.0" />
 	</Robot>
-
-    <Obstacle obstacle="obstacles/madar_bar/madar_case.urdf" scale="50">
+	<Obstacle obstacle="obstacles/madar_bar/madar_case.urdf" scale="50">
 		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="0.0" Y="0" X="0" />
-	</Obstacle>  
-
-    <Obstacle obstacle="obstacles/madar_bar/glass1.urdf" scale="50">
+	</Obstacle>
+	<Obstacle obstacle="obstacles/madar_bar/glass1.urdf" scale="50">
 		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="73.5" Y="110.0" X="60.0" />
-
 	</Obstacle>
-
-    <Obstacle obstacle="obstacles/madar_bar/glass2.urdf" scale="50">
+	<Obstacle obstacle="obstacles/madar_bar/glass2.urdf" scale="50">
 		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="73.5" Y="110.0" X="75.0" />
-
 	</Obstacle>
-
 	<Obstacle obstacle="obstacles/madar_bar/glass3.urdf" scale="50">
 		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="43.5" Y="110.0" X="60.0" />
-
 	</Obstacle>
-
 	<Obstacle obstacle="obstacles/madar_bar/glass4.urdf" scale="50">
 		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="43.5" Y="110.0" X="75.0" />
-
 	</Obstacle>
-
-
 	<Obstacle obstacle="obstacles/madar_bar/bottle_L.urdf" scale="2">
 		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="43.5" Y="-20.0" X="130.0" />
 	</Obstacle>
-
 	<Obstacle obstacle="obstacles/madar_bar/bottle_R.urdf" scale="2">
 		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="43.5" Y="-100.0" X="130.0" />
 	</Obstacle>
-
-	<Controls robot="controls/madar_left_arm.cntr" />
+	<Controls robot="controls/hand_pick/madar_left_hand.cntr" />
 	<Planner>
 		<Parameters>
 			<Name>omplRRTConnect</Name>
-			<Parameter name="_Max Planning Time">120.0</Parameter>
-			<Parameter name="_Speed Factor">2</Parameter>
 			<Parameter name="Range">5</Parameter>
+			<Parameter name="_Cspace Drawn">0</Parameter>
+			<Parameter name="_Incremental (0/1)">0</Parameter>
+			<Parameter name="_Max Planning Time">120</Parameter>
+			<Parameter name="_Path Drawn (0/1)">1</Parameter>
+			<Parameter name="_Simplify Solution">2</Parameter>
+			<Parameter name="_Speed Factor">2</Parameter>
 		</Parameters>
 		<Queries>
 			<Query>
-				<Init>0.45 0.58 0.13 0.5 0.5 0.7</Init>
-				<Goal>0.368 0.383 0.387 0.541 0.688 0.624</Goal>
+				<Init dim="16">0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</Init>
+				<Goal dim="16">0.5 1 1 1 0.5 1 1 1 0.5 1 1 1 0.5 0.5 0.5 0.5</Goal>
 			</Query>
 		</Queries>
 	</Planner>

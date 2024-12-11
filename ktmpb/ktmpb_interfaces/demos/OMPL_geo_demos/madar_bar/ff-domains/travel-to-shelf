@@ -17,8 +17,10 @@
     table3-left table3-right
     table4-left table4-right
     prep-section1 prep-section2 prep-section3 prep-section4
-    SHELF_L_1 SHELF_L_2 SHELF_L_3 SHELF_L_4
-    SHELF_R_1 SHELF_R_2 SHELF_R_3 SHELF_R_4 - section
+    SHELF_1 SHELF_2 SHELF_3 SHELF_4 - section
+
+    ; Objects
+    glass1 glass2 glass3 glass4 - object
   )
 
   (:init
@@ -53,14 +55,16 @@
     (section-of prep-section4 PREPARATION-TABLE)
 
     ; Shelf sections
-    (section-of SHELF_L_1 SHELF)
-    (section-of SHELF_L_2 SHELF)
-    (section-of SHELF_L_3 SHELF)
-    (section-of SHELF_L_4 SHELF)
-    (section-of SHELF_R_1 SHELF)
-    (section-of SHELF_R_2 SHELF)
-    (section-of SHELF_R_3 SHELF)
-    (section-of SHELF_R_4 SHELF)
+    (section-of SHELF_1 SHELF)
+    (section-of SHELF_2 SHELF)
+    (section-of SHELF_3 SHELF)
+    (section-of SHELF_4 SHELF)
+
+    ; Accessibility predicates
+    (left-accessible SHELF_1)
+    (left-accessible SHELF_3)
+    (right-accessible SHELF_2)
+    (right-accessible SHELF_4)
 
     ; Connectivity between locations
     (connected HOME PREPARATION-TABLE)
@@ -89,14 +93,19 @@
     (connected TABLE4 TABLE2)
     (connected TABLE3 TABLE4)
     (connected TABLE4 TABLE3)
+
+    ; Glasses' initial locations
+    (at glass1 SHELF_1)
+    (at glass2 SHELF_2)
+    (at glass3 SHELF_3)
+    (at glass4 SHELF_4)
   )
 
   (:goal
     (and
-      ; Goal: Robot is at SHELF and both hands are at specified sections
-      (at MADAR SHELF)
-      (hand-at LEFT-HAND SHELF_L_1)
-      (hand-at RIGHT-HAND SHELF_R_2)
+      ; Goal: Robot picks up glass1 with the LEFT-HAND and glass2 with the RIGHT-HAND
+      (holding LEFT-HAND glass1)
+      (holding RIGHT-HAND glass2)
     )
   )
 )

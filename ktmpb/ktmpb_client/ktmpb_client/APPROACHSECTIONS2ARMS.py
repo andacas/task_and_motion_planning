@@ -51,24 +51,24 @@ def APPROACHSECTIONS2ARMS(node, approachsections2arms, info, Line):
     # Write path to taskfile
     if path:
         print("-------- Path found: Moving robot's both hands to sections --------")
-        if info.graspedobject is False:
+        if not info.graspedobject:
             info.taskfile.write("\t<Transit>\n")
 
             k = sorted(list(path.keys()))[-1][1] + 1  # Number of joints
             p = sorted(list(path.keys()))[-1][0] + 1  # Number of points in the path
             for i in range(p):
                 tex = ''
-                for j in range(0, k):
+                for j in range(k):
                     tex += str(path[i, j]) + " "
                 ktmpb_python_interface.writePath(info.taskfile, tex)
             info.taskfile.write("\t</Transit>\n")
         else:
-            # Not sure when this else is needed...
+            # Handle case when an object is grasped
             k = sorted(list(path.keys()))[-1][1] + 1  # Number of joints
             p = sorted(list(path.keys()))[-1][0] + 1  # Number of points in the path
             for i in range(p):
                 tex = ''
-                for j in range(0, k):
+                for j in range(k):
                     tex += str(path[i, j]) + " "
                 ktmpb_python_interface.writePath(info.taskfile, tex)
 
@@ -89,11 +89,11 @@ def Approachsections2arms_read(action_element):  # Reading from the TAMP configu
 
     for el in action_element:
         try:
-            globals()[el.tag] = int(el.text)
-        except:
+            approachsections2arms[el.tag] = int(el.text)
+        except ValueError:
             try:
-                globals()[el.tag] = [float(f) for f in str(el.text).strip().split()]
-            except:
-                globals()[el.tag] = str(el.text).strip()
-        approachsections2arms.update({el.tag: globals()[el.tag]})
+                approachsections2arms[el.tag] = [float(f) for f in str(el.text).strip().split()]
+            except ValueError:
+                approachsections2arms[el.tag] = str(el.text).strip()
+        print(f"Parsed {el.tag}: {approachsections2arms[el.tag]}")
     return approachsections2arms

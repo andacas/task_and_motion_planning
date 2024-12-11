@@ -199,8 +199,8 @@
           <GoalControls> 0.25 0.75 0.5 </GoalControls>
       </Move>
 
-      <!-- Approach-Section action for LEFT-HAND at SHELF_1 -->
-      <Approach_section robot="MADAR" hand="LEFT-HAND" location="SHELF" section="SHELF_1">
+      <!-- Approach-Section action for LEFT-HAND at SHELF_L_1 -->
+      <Approach_section robot="MADAR" hand="LEFT-HAND" location="SHELF" section="SHELF_L_1">
           <Rob> 0 </Rob>
           <Cont> controls/madar_left_arm.cntr </Cont>
           <!-- Base X, Y, Z, followed by 6 arm joint angles -->
@@ -210,8 +210,8 @@
 
       <!-- Repeat for each section with the corresponding joint values -->
 
-      <!-- Approach-Section action for LEFT-HAND at SHELF_2 -->
-      <Approach_section robot="MADAR" hand="LEFT-HAND" location="SHELF" section="SHELF_2">
+      <!-- Approach-Section action for LEFT-HAND at SHELF_L_2 -->
+      <Approach_section robot="MADAR" hand="LEFT-HAND" location="SHELF" section="SHELF_L_2">
           <Rob> 0 </Rob>
           <Cont> controls/madar_left_arm.cntr </Cont>
           <InitControls> 0.45 0.58 0.13 0.5 0.5 0.7 </InitControls>
@@ -219,7 +219,7 @@
       </Approach_section>
 
       <!-- Approach-Section action for LEFT-HAND at SHELF_L_3 -->
-      <Approach_section robot="MADAR" hand="LEFT-HAND" location="SHELF" section="SHELF_3">
+      <Approach_section robot="MADAR" hand="LEFT-HAND" location="SHELF" section="SHELF_L_3">
           <Rob> 0 </Rob>
           <Cont> controls/madar_left_arm.cntr </Cont>
           <InitControls> 0.45 0.58 0.13 0.5 0.5 0.7 </InitControls>
@@ -227,7 +227,7 @@
       </Approach_section>
 
       <!-- Approach-Section action for LEFT-HAND at SHELF_L_4 -->
-      <Approach_section robot="MADAR" hand="LEFT-HAND" location="SHELF" section="SHELF_4">
+      <Approach_section robot="MADAR" hand="LEFT-HAND" location="SHELF" section="SHELF_L_4">
           <Rob> 0 </Rob>
           <Cont> controls/madar_left_arm.cntr </Cont>
           <InitControls> 0.45 0.58 0.13 0.5 0.5 0.7 </InitControls>
@@ -235,7 +235,7 @@
       </Approach_section>
 
       <!-- Approach-Section action for RIGHT-HAND at SHELF_R_1 -->
-      <Approach_section robot="MADAR" hand="RIGHT-HAND" location="SHELF" section="SHELF_1">
+      <Approach_section robot="MADAR" hand="RIGHT-HAND" location="SHELF" section="SHELF_R_1">
           <Rob> 0 </Rob>
           <Cont> controls/madar_right_arm.cntr </Cont>
           <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 </InitControls>
@@ -243,7 +243,7 @@
       </Approach_section>
 
       <!-- Approach-Section action for RIGHT-HAND at SHELF_R_2 -->
-      <Approach_section robot="MADAR" hand="RIGHT-HAND" location="SHELF" section="SHELF_2">
+      <Approach_section robot="MADAR" hand="RIGHT-HAND" location="SHELF" section="SHELF_R_2">
           <Rob> 0 </Rob>
           <Cont> controls/madar_right_arm.cntr </Cont>
           <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 </InitControls>
@@ -251,7 +251,7 @@
       </Approach_section>
 
       <!-- Approach-Section action for RIGHT-HAND at SHELF_R_3 -->
-      <Approach_section robot="MADAR" hand="RIGHT-HAND" location="SHELF" section="SHELF_3">
+      <Approach_section robot="MADAR" hand="RIGHT-HAND" location="SHELF" section="SHELF_R_3">
           <Rob> 0 </Rob>
           <Cont> controls/madar_right_arm.cntr </Cont>
           <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 </InitControls>
@@ -259,7 +259,7 @@
       </Approach_section>
 
       <!-- Approach-Section action for RIGHT-HAND at SHELF_R_4 -->
-      <Approach_section robot="MADAR" hand="RIGHT-HAND" location="SHELF" section="SHELF_4">
+      <Approach_section robot="MADAR" hand="RIGHT-HAND" location="SHELF" section="SHELF_R_4">
           <Rob> 0 </Rob>
           <Cont> controls/madar_right_arm.cntr </Cont>
           <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 </InitControls>
@@ -267,49 +267,17 @@
       </Approach_section>
 
               <!-- New Action: Approach_Sections_2_Arms -->
-      <Approachsections2arms robot="MADAR" hand1="LEFT-HAND" hand2="RIGHT-HAND" location="SHELF" section1="SHELF_1" section2="SHELF_2">
+      <Approachsections2arms robot="MADAR" hand1="LEFT-HAND" hand2="RIGHT-HAND" location="SHELF" section1="SHELF_L_1" section2="SHELF_R_2">
           <Rob> 0 </Rob>
           <Cont>controls/madar_both_arms.cntr</Cont>
-
-          <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 0.45 0.58 0.13 0.5 0.5 0.7</InitControls>
-          <GoalControls> 0.741 0.906 0.335 0.244 0.241 0.436 0.24 0.395 0.274 0.620 0.774 0.632</GoalControls>
-      </Approachsections2arms>
-
-            <!-- SHELF_1 (LEFT-HAND) + SHELF_4 (RIGHT-HAND) -->
-      <Approachsections2arms robot="MADAR" hand1="LEFT-HAND" hand2="RIGHT-HAND" location="SHELF" section1="SHELF_1" section2="SHELF_4">
-          <Rob> 0 </Rob>
-          <Cont>controls/madar_both_arms.cntr</Cont>
-          <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 0.45 0.58 0.13 0.5 0.5 0.7</InitControls>
-          <GoalControls> 0.673 0.624 0.684 0.233 0.226 0.372 0.24 0.395 0.274 0.620 0.774 0.632</GoalControls>
-      </Approachsections2arms>
-
-      <!-- SHELF_3 (LEFT-HAND) + SHELF_2 (RIGHT-HAND) -->
-      <Approachsections2arms robot="MADAR" hand1="LEFT-HAND" hand2="RIGHT-HAND" location="SHELF" section1="SHELF_3" section2="SHELF_2">
-          <Rob> 0 </Rob>
-          <Cont>controls/madar_both_arms.cntr</Cont>
+          <!-- Base X, Y, Z, followed by arm joint angles for both arms -->
+          <!-- Left arm joint values for SHELF_L_1 -->
+          <!-- Right arm joint values for SHELF_R_2 0.24 0.395 0.274 0.620 0.774 0.632 0.741 0.906 0.335 0.244 0.241 0.436		
+          		<Init>0.5 0.5 0.5 0.55 0.5 0.87 0.25 0.45 0.25 0.45 0.58 0.13 0.5 0.5 0.7</Init>
+				<Goal>0.5 0.5 0.5 0.55 0.5 0.87 0.25 0.45 0.25 0.45 0.58 0.13 0.5 0.5 0.7</Goal>-->
           <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 0.45 0.58 0.13 0.5 0.5 0.7</InitControls>
           <GoalControls> 0.741 0.906 0.335 0.244 0.241 0.436 0.338 0.477 0.293 0.541 0.688 0.624</GoalControls>
       </Approachsections2arms>
-
-      <!-- SHELF_3 (LEFT-HAND) + SHELF_4 (RIGHT-HAND) -->
-      <Approachsections2arms robot="MADAR" hand1="LEFT-HAND" hand2="RIGHT-HAND" location="SHELF" section1="SHELF_3" section2="SHELF_4">
-          <Rob> 0 </Rob>
-          <Cont>controls/madar_both_arms.cntr</Cont>
-          <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 0.45 0.58 0.13 0.5 0.5 0.7</InitControls>
-          <GoalControls> 0.673 0.624 0.684 0.233 0.226 0.372 0.338 0.477 0.293 0.541 0.688 0.624</GoalControls>
-      </Approachsections2arms>
-
-
-      <Pick robot="MADAR" hand="LEFT-HAND" object="glass1" section="SHELF_1">
-          <Rob>0</Rob>
-          <Link>1</Link> <!-- Assuming link index 1 for LEFT-HAND -->
-          <Cont>controls/madar_left_hand.cntr</Cont>
-          <Regioncontrols>0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0</Regioncontrols>
-          <Graspcontrols>
-              <grasp grasp="1">0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2</grasp>
-          </Graspcontrols>
-      </Pick>
-
   </Actions>
 
 </Config>

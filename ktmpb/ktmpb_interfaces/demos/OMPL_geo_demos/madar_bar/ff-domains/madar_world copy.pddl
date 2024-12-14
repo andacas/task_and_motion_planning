@@ -9,6 +9,7 @@
   (:predicates
     ; Robot location predicates
     (at ?r - robot ?l - location)
+    (holding ?h - hand ?o - object) ; New Predicate
     (hand-at ?h - hand ?s - section)
     (section-of ?s - section ?l - location)
     (free-hand ?h - hand)
@@ -44,7 +45,40 @@
   (:action retract-hand
     :parameters (?h - hand ?s - section)
     :precondition (hand-at ?h ?s)
-    :effect (not (hand-at ?h ?s))
+    :effect (and
+              (not (hand-at ?h ?s))
+              (free-hand ?h))
+  )
+
+  ; Action: Pick an object with a hand
+  (:action pick
+    :parameters (?r - robot 
+                ?h - hand 
+                ?o - object 
+                ?s - section)
+    :precondition (and
+                    (free-hand ?h)
+                    (hand-at ?h ?s)
+                    (at ?o ?s)) ; Ensure object is at the section
+    :effect (and
+              (not (free-hand ?h))
+              (holding ?h ?o)
+              (not (at ?o ?s))) ; Object is now held, not at the section
+  )
+
+  ; Action: Release an object from a hand
+  (:action release
+    :parameters (?r - robot 
+                ?h - hand 
+                ?o - object 
+                ?s - section)
+    :precondition (and
+                    (holding ?h ?o)
+                    (hand-at ?h ?s))
+    :effect (and
+              (free-hand ?h)
+              (not (holding ?h ?o))
+              (at ?o ?s)) ; Object is placed back at the section
   )
 
   ; New Action: Approach both hands to different sections simultaneously

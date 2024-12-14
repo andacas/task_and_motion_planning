@@ -2,71 +2,47 @@
   (:domain robot_bartender)
 
   (:objects
-    ; Robot
     MADAR - robot
-
-    ; Locations
     HOME SHELF PREPARATION-TABLE TABLE1 TABLE2 TABLE3 TABLE4 - location
-
-    ; Hands
     LEFT-HAND RIGHT-HAND - hand
-
-    ; Sections
     table1-left table1-right
     table2-left table2-right
     table3-left table3-right
     table4-left table4-right
     prep-section1 prep-section2 prep-section3 prep-section4
     SHELF_1 SHELF_2 SHELF_3 SHELF_4 - section
-
-    ; Objects
     glass1 glass2 glass3 glass4 - object
   )
 
   (:init
-    ; Robot's initial location
     (at MADAR HOME)
-
-    ; Robot's hands are free
     (free-hand LEFT-HAND)
     (free-hand RIGHT-HAND)
+    (arm-retracted LEFT-HAND)
+    (arm-retracted RIGHT-HAND)
 
-    ; Sections in locations
-    ; Table1 sections
     (section-of table1-left TABLE1)
     (section-of table1-right TABLE1)
-
-    ; Table2 sections
     (section-of table2-left TABLE2)
     (section-of table2-right TABLE2)
-
-    ; Table3 sections
     (section-of table3-left TABLE3)
     (section-of table3-right TABLE3)
-
-    ; Table4 sections
     (section-of table4-left TABLE4)
     (section-of table4-right TABLE4)
-
-    ; Preparation Table sections
     (section-of prep-section1 PREPARATION-TABLE)
     (section-of prep-section2 PREPARATION-TABLE)
     (section-of prep-section3 PREPARATION-TABLE)
     (section-of prep-section4 PREPARATION-TABLE)
-
-    ; Shelf sections
     (section-of SHELF_1 SHELF)
     (section-of SHELF_2 SHELF)
     (section-of SHELF_3 SHELF)
     (section-of SHELF_4 SHELF)
 
-    ; Accessibility predicates
     (left-accessible SHELF_1)
     (left-accessible SHELF_3)
     (right-accessible SHELF_2)
     (right-accessible SHELF_4)
 
-    ; Connectivity between locations
     (connected HOME PREPARATION-TABLE)
     (connected PREPARATION-TABLE HOME)
     (connected HOME SHELF)
@@ -94,7 +70,6 @@
     (connected TABLE3 TABLE4)
     (connected TABLE4 TABLE3)
 
-    ; Glasses' initial locations
     (at glass1 SHELF_1)
     (at glass2 SHELF_2)
     (at glass3 SHELF_3)
@@ -103,9 +78,9 @@
 
   (:goal
     (and
-      ; Goal: Robot picks up glass1 with the LEFT-HAND and glass2 with the RIGHT-HAND
       (holding LEFT-HAND glass1)
-      (holding RIGHT-HAND glass2)
+      (at MADAR PREPARATION-TABLE)
+      ;(holding RIGHT-HAND glass2)
     )
   )
 )

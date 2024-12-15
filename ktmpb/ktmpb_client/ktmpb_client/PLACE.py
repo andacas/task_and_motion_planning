@@ -18,8 +18,8 @@ def PLACE(node,place,info,Line):  #management of the action on the task plan
     print("**************************************************************************")
     action=Line[0]
     rob= Line[1]
-    obstacle = Line[2]
-    toLocation = Line[3]
+    obstacle = Line[3]
+    toLocation = Line[4]
     
     print(action +" "+rob+" "+obstacle+" "+toLocation)
     obsName = place['Obj'] #Obj_name 

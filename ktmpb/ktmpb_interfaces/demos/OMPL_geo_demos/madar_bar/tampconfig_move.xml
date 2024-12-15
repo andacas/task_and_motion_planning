@@ -11,6 +11,7 @@
       <!-- Initial state with robot at HOME position -->
       <Initial>
           <!-- Robot's initial configuration (controlfile can be adjusted as per your setup) -->
+         <Object name="GLASS1" kthname="glass1">60 110 73.5 0 0 1 0</Object> <!-- orientation in axis-angle (vx,vy,vz,theta) like in the kautham problem files-->
           <Robot name="MADAR" controlfile="controls/madar_R2.cntr"> 0.5 0.5 0.5 </Robot>
       </Initial>
   </States>
@@ -208,7 +209,6 @@
           <GoalControls> 0.24 0.395 0.274 0.620 0.774 0.632</GoalControls>
       </Approach_section>
 
-      <!-- Repeat for each section with the corresponding joint values -->
 
       <!-- Approach-Section action for LEFT-HAND at SHELF_2 -->
       <Approach_section robot="MADAR" hand="LEFT-HAND" location="SHELF" section="SHELF_2">
@@ -300,35 +300,52 @@
       </Approachsections2arms>
 
 
-<Pick robot="MADAR" hand="LEFT-HAND" object="GLASS1" section="SHELF_1">
-    <Rob>0</Rob>               <!-- Robot index, assuming MADAR is robot 0 -->
-    <Obj>glass1</Obj>          <!-- The object name as per the urdf and the problem file -->
-    <Link>60</Link>             <!-- Link index corresponding to LEFT-HAND -->
-          <Cont>controls/hand_pick/madar_left_hand.cntr</Cont>
+
+      <!-- Approach-Section action for PREPARATION-TABLE -->
+      <Approach_section robot="MADAR" hand="LEFT-HAND" location="PREPARATION-TABLE" section="PREP-SECTION1">
+          <Rob> 0 </Rob>
+          <Cont> controls/arm_aproach/madar_left_arm.cntr </Cont>
+          <!-- Base X, Y, Z, followed by 6 arm joint angles -->
+          <InitControls> 0.45 0.58 0.13 0.5 0.5 0.7 </InitControls>
+          <GoalControls> 0.24 0.395 0.274 0.620 0.774 0.632</GoalControls>
+      </Approach_section>
+
     
-    <!-- Regioncontrols: Initial hand/finger configuration before approaching the grasp.
-         Adjust these values to represent the starting joint configuration of the left hand. -->
-    <Regioncontrols>0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0</Regioncontrols>
+    <Pick robot="MADAR" hand="LEFT-HAND" object="GLASS1" section="SHELF_1">
+        <Rob>0</Rob>
+        <Obj>glass1</Obj>
+        <Link>82</Link>
+        <Cont>controls/hand_pick/madar_left_hand.cntr</Cont>
+        <Regioncontrols>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</Regioncontrols>
+        <Graspcontrols>
+          <grasp grasp="1">0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</grasp>
+        </Graspcontrols>
+    </Pick>
 
-    <!-- Graspcontrols: Defines the joint configuration of the hand's fingers to perform the grasp.
-         'grasp="1"' is an identifier for a particular grasp attempt.
-         Adjust these values to a plausible hand closure configuration. -->
-    <Graspcontrols grasp="1">0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2</Graspcontrols>
+    <Retractarm robot="MADAR" hand="LEFT-HAND" location="SHELF" section="SHELF_1">
+         <Rob> 0 </Rob>
+        <Cont> controls/madar_left_arm.cntr </Cont>
+        <InitControls> 0.24 0.395 0.274 0.620 0.774 0.632 </InitControls>
+        <GoalControls> 0.45 0.58 0.13 0.5 0.5 0.7 </GoalControls>
+    </Retractarm>
 
-    <!-- Optional: If you want to specify a Pose and Grasptransf for the object.
-         These are optional and depend on whether your pick action or simulation requires them.
-         If not needed, you can omit these tags.
-    <Pose>0.0 0.0 0.0 0 0 0 1</Pose>
-    <Grasptransf grasp="1">0.0 0.0 0.1 0.707 0.0 0.0 0.707</Grasptransf>
-    -->
-</Pick>
+    <Retractarm robot="MADAR" hand="LEFT-HAND" location="PREPARATION-TABLE" section="PREP-SECTION1">
+         <Rob> 0 </Rob>
+        <Cont> controls/arm_retract/madar_left_arm.cntr </Cont>
+        <InitControls> 0.24 0.395 0.274 0.620 0.774 0.632 </InitControls>
+        <GoalControls> 0.45 0.58 0.13 0.5 0.5 0.7 </GoalControls>
+    </Retractarm>
 
-<Retractarm robot="MADAR" hand="LEFT-HAND" location="SHELF" section="SHELF_1">
-     <Rob> 0 </Rob>
-    <Cont> controls/madar_left_arm.cntr </Cont>
-    <InitControls> 0.24 0.395 0.274 0.620 0.774 0.632 </InitControls>
-    <GoalControls> 0.45 0.58 0.13 0.5 0.5 0.7 </GoalControls>
-</Retractarm>
+<Place robot="MADAR" hand="LEFT-HAND" object="GLASS1" section="PREP-SECTION1">
+    <Rob>0</Rob>
+    <Obj>glass1</Obj>
+    <Cont>controls/hand_place/left_hand_prep_1.cntr</Cont>
+    <Regioncontrols>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</Regioncontrols>
+    <Graspcontrols>
+      <grasp grasp="1">0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</grasp>
+    </Graspcontrols>
+</Place>
+
 
 
 

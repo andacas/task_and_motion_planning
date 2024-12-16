@@ -7,20 +7,21 @@
   )
 
   (:predicates
-    (at ?r - robot ?l - location)
-    (holding ?h - hand ?o - object)
-    (hand-at ?h - hand ?s - section)
-    (section-of ?s - section ?l - location)
-    (free-hand ?h - hand)
-    (connected ?l1 - location ?l2 - location)
-
-    (left-accessible ?s - section)
-    (right-accessible ?s - section)
-
-    (arm-retracted ?h - hand)
+    (at ?r - robot ?l - location)              ; Robot at location
+    (holding ?h - hand ?o - object)           ; Hand holding an object
+    (obj-at ?o - object ?s - section)         ; Object at section
+    (hand-at ?h - hand ?s - section)          ; Hand at section
+    (section-of ?s - section ?l - location)   ; Section belongs to location
+    (free-hand ?h - hand)                     ; Hand is free
+    (connected ?l1 - location ?l2 - location) ; Locations are connected
+    (left-accessible ?s - section)            ; Section accessible by left hand
+    (right-accessible ?s - section)           ; Section accessible by right hand
+    (arm-retracted ?h - hand)                 ; Arm is retracted
+    (glass-empty ?o - object)                 ; Glass is empty
+    (glass-filled ?o - object)                ; Glass is filled (drink ready)
   )
 
-  ; Move requires both arms retracted
+  ; Move action
   (:action move
     :parameters (?rob - robot ?from - location ?to - location)
     :precondition (and
@@ -33,12 +34,11 @@
               (at ?rob ?to))
   )
 
-  ; Approach a single section with one arm
+  ; Approach section action
   (:action approach_section
     :parameters (?r - robot ?h - hand ?l - location ?s - section)
     :precondition (and
                     (at ?r ?l)
-                    (free-hand ?h)
                     (arm-retracted ?h)
                     (section-of ?s ?l))
     :effect (and
@@ -46,8 +46,7 @@
               (not (arm-retracted ?h)))
   )
 
-  ; Retract a single arm from a section to retracted position
-  ; No free-hand condition, can retract while holding an object
+  ; Retract arm action
   (:action retractarm
     :parameters (?r - robot ?h - hand ?l - location ?s - section)
     :precondition (and
@@ -58,42 +57,44 @@
               (arm-retracted ?h))
   )
 
-  ; Approach both arms to different sections simultaneously
-  (:action approachsections2arms
-    :parameters (?r - robot ?h1 - hand ?h2 - hand ?l - location ?s1 - section ?s2 - section)
-    :precondition (and
-                    (at ?r ?l)
-                    (free-hand ?h1)
-                    (free-hand ?h2)
-                    (arm-retracted ?h1)
-                    (arm-retracted ?h2)
-                    (section-of ?s1 ?l)
-                    (section-of ?s2 ?l)
-                    (not (= ?h1 ?h2))
-                    (not (= ?s1 ?s2))
-                    (or (and (= ?h1 LEFT-HAND) (left-accessible ?s1))
-                        (and (= ?h1 RIGHT-HAND) (right-accessible ?s1)))
-                    (or (and (= ?h2 LEFT-HAND) (left-accessible ?s2))
-                        (and (= ?h2 RIGHT-HAND) (right-accessible ?s2))))
-    :effect (and
-              (hand-at ?h1 ?s1)
-              (hand-at ?h2 ?s2)
-              (not (arm-retracted ?h1))
-              (not (arm-retracted ?h2)))
-  )
-
-  ; Pick an object with a hand
+  ; Pick action
   (:action pick
     :parameters (?r - robot ?h - hand ?o - object ?s - section)
     :precondition (and
                     (free-hand ?h)
                     (hand-at ?h ?s)
-                    (at ?o ?s)
-                    (or (and (= ?h LEFT-HAND) (left-accessible ?s))
-                        (and (= ?h RIGHT-HAND) (right-accessible ?s))))
+                    (obj-at ?o ?s))
     :effect (and
               (not (free-hand ?h))
               (holding ?h ?o)
-              (not (at ?o ?s)))
+              (not (obj-at ?o ?s)))
+  )
+
+  ; Place action
+  (:action place
+    :parameters (?r - robot ?h - hand ?o - object ?s - section)
+    :precondition (and
+                    (holding ?h ?o)
+                    (hand-at ?h ?s))
+    :effect (and
+              (free-hand ?h)
+              (not (holding ?h ?o))
+              (obj-at ?o ?s))
+  )
+
+  ; Prepare drink action
+  (:action prepare_drink
+    :parameters (?r - robot ?o - object ?s - section)
+    :precondition (and
+                    (obj-at ?o ?s)
+                    (glass-empty ?o)
+                    (free-hand LEFT-HAND)
+                    (free-hand RIGHT-HAND)
+                    (arm-retracted LEFT-HAND)
+                    (arm-retracted RIGHT-HAND)
+                    (section-of ?s PREPARATION-TABLE))
+    :effect (and
+              (not (glass-empty ?o))
+              (glass-filled ?o))
   )
 )

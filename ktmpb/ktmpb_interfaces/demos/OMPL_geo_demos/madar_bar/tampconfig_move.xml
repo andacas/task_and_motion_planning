@@ -304,10 +304,10 @@
       <!-- Approach-Section action for PREPARATION-TABLE -->
       <Approach_section robot="MADAR" hand="LEFT-HAND" location="PREPARATION-TABLE" section="PREP-SECTION1">
           <Rob> 0 </Rob>
-          <Cont> controls/arm_aproach/madar_left_arm.cntr </Cont>
+          <Cont> controls/arm_aproach/left_prep1.cntr </Cont>
           <!-- Base X, Y, Z, followed by 6 arm joint angles -->
-          <InitControls> 0.45 0.58 0.13 0.5 0.5 0.7 </InitControls>
-          <GoalControls> 0.24 0.395 0.274 0.620 0.774 0.632</GoalControls>
+          <InitControls>0.45 0.58 0.13 0.5 0.5 0.7</InitControls>
+          <GoalControls>0.338 0.462 0.305 0.571 0.650 0.628</GoalControls>
       </Approach_section>
 
     
@@ -331,9 +331,9 @@
 
     <Retractarm robot="MADAR" hand="LEFT-HAND" location="PREPARATION-TABLE" section="PREP-SECTION1">
          <Rob> 0 </Rob>
-        <Cont> controls/arm_retract/madar_left_arm.cntr </Cont>
-        <InitControls> 0.24 0.395 0.274 0.620 0.774 0.632 </InitControls>
-        <GoalControls> 0.45 0.58 0.13 0.5 0.5 0.7 </GoalControls>
+        <Cont> controls/arm_retract/left_prep1.cntr </Cont>
+        <InitControls>0.338 0.462 0.305 0.571 0.650 0.628</InitControls>
+        <GoalControls>0.45 0.58 0.13 0.5 0.5 0.7</GoalControls>
     </Retractarm>
 
 <Place robot="MADAR" hand="LEFT-HAND" object="GLASS1" section="PREP-SECTION1">
@@ -346,6 +346,18 @@
     </Graspcontrols>
 </Place>
 
+<Preparedrink robot="MADAR" bottle="bottle" glass="glass1" section="PREP-SECTION1">
+    <Rob>0</Rob>
+    <Obj>bottle</Obj>
+    <Link>82</Link>
+    <ArmCont>controls/arm_prep_drink.cntr</ArmCont>
+    <HandCont>controls/hand_prep_drink.cntr</HandCont>
+    <InitControls>0.286 0.47 0.429 0.470 0.65 0.628</InitControls>
+    <GoalControls>0.286 0.47 0.429 0.470 0.65 0.628</GoalControls>
+    <Regioncontrols>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</Regioncontrols>
+    <Graspcontrols>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</Graspcontrols>
+    <GlassPosition>0.286 0.47 0.429 0.470 0.65 0.628</GlassPosition>
+</Preparedrink>
 
 
 

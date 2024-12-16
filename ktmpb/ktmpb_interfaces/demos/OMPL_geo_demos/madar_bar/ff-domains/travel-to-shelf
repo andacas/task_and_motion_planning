@@ -1,4 +1,4 @@
-(define (problem travel-to-shelf)
+(define (problem deliver-drink)
   (:domain robot_bartender)
 
   (:objects
@@ -12,17 +12,18 @@
     prep-section1 prep-section2 prep-section3 prep-section4
     SHELF_1 SHELF_2 SHELF_3 SHELF_4 - section
     glass1 glass2 glass3 glass4 - object
+    bottle - object
   )
 
   (:init
-    ; Robot initial state: at HOME, arms retracted, hands free
+    ; Robot state
     (at MADAR HOME)
     (free-hand LEFT-HAND)
     (free-hand RIGHT-HAND)
     (arm-retracted LEFT-HAND)
     (arm-retracted RIGHT-HAND)
 
-    ; Section assignments to locations
+    ; Section assignments
     (section-of table1-left TABLE1)
     (section-of table1-right TABLE1)
     (section-of table2-left TABLE2)
@@ -40,40 +41,56 @@
     (section-of SHELF_3 SHELF)
     (section-of SHELF_4 SHELF)
 
-    ; Accessibility by hands
+    ; Accessibility
     (left-accessible SHELF_1)
     (left-accessible SHELF_3)
     (right-accessible SHELF_2)
     (right-accessible SHELF_4)
     (left-accessible prep-section1)
 
-    ; Connectivity between locations
+    ; Connectivity
     (connected HOME SHELF)
     (connected SHELF HOME)
     (connected SHELF PREPARATION-TABLE)
     (connected PREPARATION-TABLE SHELF)
+    (connected HOME TABLE1)
+    (connected TABLE1 HOME)
+    (connected HOME TABLE2)
+    (connected TABLE2 HOME)
+    (connected HOME TABLE3)
+    (connected TABLE3 HOME)
+    (connected HOME TABLE4)
+    (connected TABLE4 HOME)
+    (connected TABLE1 TABLE2)
+    (connected TABLE2 TABLE1)
+    (connected TABLE1 TABLE3)
+    (connected TABLE3 TABLE1)
+    (connected TABLE1 TABLE4)
+    (connected TABLE4 TABLE1)
+    (connected TABLE2 TABLE3)
+    (connected TABLE3 TABLE2)
+    (connected TABLE2 TABLE4)
+    (connected TABLE4 TABLE2)
+    (connected TABLE3 TABLE4)
+    (connected TABLE4 TABLE3)
 
-    ; Initial locations of objects
+    ; Object locations and states
     (obj-at glass1 SHELF_1)
     (obj-at glass2 SHELF_2)
     (obj-at glass3 SHELF_3)
     (obj-at glass4 SHELF_4)
+    (glass-empty glass1)
+    (glass-empty glass2)
+    (glass-empty glass3)
+    (glass-empty glass4)
   )
 
   (:goal
     (and
-      ; Robot must be at HOME
-      ;(at MADAR HOME)
-      ;(holding LEFT-HAND glass1)
-
-      ; glass1 must be at prep-section1
-      (obj-at glass1 prep-section1)
-      ; Both arms must be retracted
-      ;(arm-retracted LEFT-HAND)
-      ;(arm-retracted RIGHT-HAND)
-      ; Both hands must be free
-      ;(free-hand LEFT-HAND)
-      ;(free-hand RIGHT-HAND)
+      ;(obj-at glass1 table1-left)   ; Deliver glass1 to TABLE1
+      ;(glass-filled glass1)        ; Ensure glass1 is filled
+      (obj-at glass1 prep-section1)   ; Deliver glass1 to TABLE1
+      (at MADAR HOME)
     )
   )
 )

@@ -17,9 +17,11 @@
     (left-accessible ?s - section)            ; Section accessible by left hand
     (right-accessible ?s - section)           ; Section accessible by right hand
     (arm-retracted ?h - hand)                 ; Arm is retracted
+    (glass-empty ?o - object)                 ; Glass is empty
+    (glass-filled ?o - object)                ; Glass is filled (drink ready)
   )
 
-  ; Move requires both arms retracted
+  ; Move action
   (:action move
     :parameters (?rob - robot ?from - location ?to - location)
     :precondition (and
@@ -32,7 +34,7 @@
               (at ?rob ?to))
   )
 
-  ; Approach a single section with one arm
+  ; Approach section action
   (:action approach_section
     :parameters (?r - robot ?h - hand ?l - location ?s - section)
     :precondition (and
@@ -44,7 +46,7 @@
               (not (arm-retracted ?h)))
   )
 
-  ; Retract a single arm
+  ; Retract arm action
   (:action retractarm
     :parameters (?r - robot ?h - hand ?l - location ?s - section)
     :precondition (and
@@ -55,7 +57,7 @@
               (arm-retracted ?h))
   )
 
-  ; Pick an object with a hand
+  ; Pick action
   (:action pick
     :parameters (?r - robot ?h - hand ?o - object ?s - section)
     :precondition (and
@@ -68,7 +70,7 @@
               (not (obj-at ?o ?s)))
   )
 
-  ; Place an object with a hand
+  ; Place action
   (:action place
     :parameters (?r - robot ?h - hand ?o - object ?s - section)
     :precondition (and
@@ -78,5 +80,21 @@
               (free-hand ?h)
               (not (holding ?h ?o))
               (obj-at ?o ?s))
+  )
+
+  ; Prepare drink action
+  (:action preparedrink
+    :parameters (?r - robot ?o - object ?s - section)
+    :precondition (and
+                    (obj-at ?o ?s)
+                    (glass-empty ?o)
+                    (free-hand LEFT-HAND)
+                    (free-hand RIGHT-HAND)
+                    (arm-retracted LEFT-HAND)
+                    (arm-retracted RIGHT-HAND)
+                    (section-of ?s PREPARATION-TABLE))
+    :effect (and
+              (not (glass-empty ?o))
+              (glass-filled ?o))
   )
 )

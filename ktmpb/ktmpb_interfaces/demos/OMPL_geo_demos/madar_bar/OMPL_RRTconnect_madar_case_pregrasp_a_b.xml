@@ -40,7 +40,7 @@
 		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="43.5" Y="-100.0" X="130.0" />
 	</Obstacle>
 
-	<Controls robot="controls/madar_both_arms.cntr" />
+	<Controls robot="controls/hand_place/left_hand_prep_1.cntr" />
 	<Planner>
 		<Parameters>
 			<Name>omplRRTConnect</Name>
@@ -50,8 +50,8 @@
 		</Parameters>
 		<Queries>
 			<Query>
-				<Init>0.55 0.5 0.87 0.25 0.45 0.25 0.45 0.58 0.13 0.5 0.5 0.7</Init>
-				<Goal>0.741 0.906 0.335 0.244 0.241 0.436 0.338 0.477 0.293 0.541 0.688 0.624</Goal>
+				<Init>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</Init>
+				<Goal>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</Goal>
 			</Query>
 		</Queries>
 	</Planner>

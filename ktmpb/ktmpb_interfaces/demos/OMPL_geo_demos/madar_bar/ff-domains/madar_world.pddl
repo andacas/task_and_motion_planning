@@ -39,8 +39,9 @@
     :parameters (?r - robot ?h - hand ?l - location ?s - section)
     :precondition (and
                     (at ?r ?l)
-                    (arm-retracted ?h)
-                    (section-of ?s ?l))
+                    (section-of ?s ?l)
+                    (arm-retracted LEFT-HAND)
+                    (arm-retracted RIGHT-HAND))
     :effect (and
               (hand-at ?h ?s)
               (not (arm-retracted ?h)))
@@ -83,9 +84,10 @@
   )
 
   ; Prepare drink action
-  (:action preparedrink
-    :parameters (?r - robot ?o - object ?s - section)
+  (:action prepare_drink
+    :parameters (?r - robot ?o - object  ?s - section)
     :precondition (and
+                    (at ?r PREPARATION-TABLE) 
                     (obj-at ?o ?s)
                     (glass-empty ?o)
                     (free-hand LEFT-HAND)

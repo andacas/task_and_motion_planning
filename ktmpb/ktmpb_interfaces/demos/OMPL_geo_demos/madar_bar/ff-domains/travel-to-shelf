@@ -87,10 +87,9 @@
 
   (:goal
     (and
-      ;(obj-at glass1 table1-left)   ; Deliver glass1 to TABLE1
-      ;(glass-filled glass1)        ; Ensure glass1 is filled
-      (obj-at glass1 prep-section1)   ; Deliver glass1 to TABLE1
-      (at MADAR HOME)
+      (obj-at glass1 table2-left)   ; Deliver glass1 to TABLE1
+      (glass-filled glass1)        ; Ensure glass1 is filled
+      ;(at MADAR HOME)
     )
   )
 )

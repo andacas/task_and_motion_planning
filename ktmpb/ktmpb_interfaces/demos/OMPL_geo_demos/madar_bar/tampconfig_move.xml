@@ -11,12 +11,20 @@
       <!-- Initial state with robot at HOME position -->
       <Initial>
           <!-- Robot's initial configuration (controlfile can be adjusted as per your setup) -->
-         <Object name="GLASS1" kthname="glass1">60 110 73.5 0 0 1 0</Object> <!-- orientation in axis-angle (vx,vy,vz,theta) like in the kautham problem files-->
+            <Object name="GLASS1" kthname="glass1">60 110 73.5 0 0 1 0</Object> <!-- orientation in axis-angle (vx,vy,vz,theta) like in the kautham problem files-->
+            <Object name="BOTTLE" kthname="bottle">130.0 -20.0 43.5 0 0 0 0</Object> <!-- orientation in axis-angle (vx,vy,vz,theta) like in the kautham problem files-->
           <Robot name="MADAR" controlfile="controls/madar_R2.cntr"> 0.5 0.5 0.5 </Robot>
       </Initial>
   </States>
   <Actions>
       <!-- Define Move actions between all connected pairs -->
+
+
+
+
+      <!-- ############################################################################################################################################################################################# -->
+      <!-- MOVE actions -->
+      <!-- ############################################################################################################################################################################################# -->
 
       <!-- Move actions between HOME and PREPARATION-TABLE -->
       <Move robot="MADAR" region_from="HOME" region_to="PREPARATION-TABLE">
@@ -200,6 +208,14 @@
           <GoalControls> 0.25 0.75 0.5 </GoalControls>
       </Move>
 
+<!-- ############################################################################################################################################################################################# -->
+<!-- END OF MOVE actions -->
+<!-- ############################################################################################################################################################################################# -->
+
+<!-- ############################################################################################################################################################################################# -->
+<!-- Approach-Section actions -->
+<!-- ############################################################################################################################################################################################# -->
+
       <!-- Approach-Section action for LEFT-HAND at SHELF_1 -->
       <Approach_section robot="MADAR" hand="LEFT-HAND" location="SHELF" section="SHELF_1">
           <Rob> 0 </Rob>
@@ -266,39 +282,6 @@
           <GoalControls> 0.673 0.624 0.684 0.233 0.226 0.372</GoalControls>
       </Approach_section>
 
-              <!-- New Action: Approach_Sections_2_Arms -->
-      <Approachsections2arms robot="MADAR" hand1="LEFT-HAND" hand2="RIGHT-HAND" location="SHELF" section1="SHELF_1" section2="SHELF_2">
-          <Rob> 0 </Rob>
-          <Cont>controls/madar_both_arms.cntr</Cont>
-
-          <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 0.45 0.58 0.13 0.5 0.5 0.7</InitControls>
-          <GoalControls> 0.741 0.906 0.335 0.244 0.241 0.436 0.24 0.395 0.274 0.620 0.774 0.632</GoalControls>
-      </Approachsections2arms>
-
-            <!-- SHELF_1 (LEFT-HAND) + SHELF_4 (RIGHT-HAND) -->
-      <Approachsections2arms robot="MADAR" hand1="LEFT-HAND" hand2="RIGHT-HAND" location="SHELF" section1="SHELF_1" section2="SHELF_4">
-          <Rob> 0 </Rob>
-          <Cont>controls/madar_both_arms.cntr</Cont>
-          <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 0.45 0.58 0.13 0.5 0.5 0.7</InitControls>
-          <GoalControls> 0.673 0.624 0.684 0.233 0.226 0.372 0.24 0.395 0.274 0.620 0.774 0.632</GoalControls>
-      </Approachsections2arms>
-
-      <!-- SHELF_3 (LEFT-HAND) + SHELF_2 (RIGHT-HAND) -->
-      <Approachsections2arms robot="MADAR" hand1="LEFT-HAND" hand2="RIGHT-HAND" location="SHELF" section1="SHELF_3" section2="SHELF_2">
-          <Rob> 0 </Rob>
-          <Cont>controls/madar_both_arms.cntr</Cont>
-          <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 0.45 0.58 0.13 0.5 0.5 0.7</InitControls>
-          <GoalControls> 0.741 0.906 0.335 0.244 0.241 0.436 0.338 0.477 0.293 0.541 0.688 0.624</GoalControls>
-      </Approachsections2arms>
-
-      <!-- SHELF_3 (LEFT-HAND) + SHELF_4 (RIGHT-HAND) -->
-      <Approachsections2arms robot="MADAR" hand1="LEFT-HAND" hand2="RIGHT-HAND" location="SHELF" section1="SHELF_3" section2="SHELF_4">
-          <Rob> 0 </Rob>
-          <Cont>controls/madar_both_arms.cntr</Cont>
-          <InitControls> 0.55 0.5 0.87 0.25 0.45 0.25 0.45 0.58 0.13 0.5 0.5 0.7</InitControls>
-          <GoalControls> 0.673 0.624 0.684 0.233 0.226 0.372 0.338 0.477 0.293 0.541 0.688 0.624</GoalControls>
-      </Approachsections2arms>
-
 
 
       <!-- Approach-Section action for PREPARATION-TABLE -->
@@ -310,7 +293,24 @@
           <GoalControls>0.338 0.462 0.305 0.571 0.650 0.628</GoalControls>
       </Approach_section>
 
-    
+
+            <!-- Approach-Section action for PREPARATION-TABLE -->
+      <Approach_section robot="MADAR" hand="LEFT-HAND" location="TABLE2" section="TABLE2-LEFT">
+          <Rob> 0 </Rob>
+          <Cont> controls/arm_aproach/left_table2.cntr </Cont>
+          <!-- Base X, Y, Z, followed by 6 arm joint angles -->
+          <InitControls>0.45 0.58 0.13 0.5 0.5 0.7</InitControls>
+          <GoalControls>0.338 0.462 0.305 0.571 0.650 0.628</GoalControls>
+      </Approach_section>
+
+<!-- ############################################################################################################################################################################################# -->
+<!-- END Approach-Section actions -->
+<!-- ############################################################################################################################################################################################# -->
+
+<!-- ############################################################################################################################################################################################# -->
+<!-- PICK actions -->
+<!-- ############################################################################################################################################################################################# -->
+
     <Pick robot="MADAR" hand="LEFT-HAND" object="GLASS1" section="SHELF_1">
         <Rob>0</Rob>
         <Obj>glass1</Obj>
@@ -321,6 +321,25 @@
           <grasp grasp="1">0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</grasp>
         </Graspcontrols>
     </Pick>
+
+    <Pick robot="MADAR" hand="LEFT-HAND" object="GLASS1" section="PREP-SECTION1">
+        <Rob>0</Rob>
+        <Obj>glass1</Obj>
+        <Link>82</Link>
+        <Cont>controls/hand_place/left_hand_prep_1.cntr</Cont>
+        <Regioncontrols>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</Regioncontrols>
+        <Graspcontrols>
+          <grasp grasp="1">0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</grasp>
+        </Graspcontrols>
+    </Pick>
+
+<!-- ############################################################################################################################################################################################# -->
+<!-- END PICK actions -->
+<!-- ############################################################################################################################################################################################# -->
+
+<!-- ############################################################################################################################################################################################# -->
+<!-- Retractarm actions -->
+<!-- ############################################################################################################################################################################################# -->
 
     <Retractarm robot="MADAR" hand="LEFT-HAND" location="SHELF" section="SHELF_1">
          <Rob> 0 </Rob>
@@ -336,6 +355,20 @@
         <GoalControls>0.45 0.58 0.13 0.5 0.5 0.7</GoalControls>
     </Retractarm>
 
+        <Retractarm robot="MADAR" hand="LEFT-HAND" location="TABLE2" section="TABLE2-LEFT">
+         <Rob> 0 </Rob>
+        <Cont> controls/arm_retract/left_table2_l.cntr </Cont>
+        <InitControls>0.338 0.462 0.305 0.571 0.650 0.628</InitControls>
+        <GoalControls>0.45 0.58 0.13 0.5 0.5 0.7</GoalControls>
+    </Retractarm>
+<!-- ############################################################################################################################################################################################# -->
+<!-- END Retractarm actions -->
+<!-- ############################################################################################################################################################################################# -->
+
+<!-- ############################################################################################################################################################################################# -->
+<!-- Place actions -->
+<!-- ############################################################################################################################################################################################# -->
+
 <Place robot="MADAR" hand="LEFT-HAND" object="GLASS1" section="PREP-SECTION1">
     <Rob>0</Rob>
     <Obj>glass1</Obj>
@@ -346,21 +379,36 @@
     </Graspcontrols>
 </Place>
 
-<Preparedrink robot="MADAR" bottle="bottle" glass="glass1" section="PREP-SECTION1">
+<Place robot="MADAR" hand="LEFT-HAND" object="GLASS1" section="TABLE2-LEFT">
+    <Rob>0</Rob>
+    <Obj>glass1</Obj>
+    <Cont>controls/hand_place/left_hand_table2_l.cntr</Cont>
+    <Regioncontrols>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</Regioncontrols>
+    <Graspcontrols>
+      <grasp grasp="1">0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</grasp>
+    </Graspcontrols>
+</Place>
+<!-- ############################################################################################################################################################################################# -->
+<!-- END Place actions -->
+<!-- ############################################################################################################################################################################################# -->
+
+<!-- ############################################################################################################################################################################################# -->
+<!-- Prepare_drink actions -->
+<!-- ############################################################################################################################################################################################# -->
+
+<Prepare_drink robot="MADAR" glass="GLASS1" section="PREP-SECTION1">
     <Rob>0</Rob>
     <Obj>bottle</Obj>
     <Link>82</Link>
-    <ArmCont>controls/arm_prep_drink.cntr</ArmCont>
-    <HandCont>controls/hand_prep_drink.cntr</HandCont>
-    <InitControls>0.286 0.47 0.429 0.470 0.65 0.628</InitControls>
-    <GoalControls>0.286 0.47 0.429 0.470 0.65 0.628</GoalControls>
+    <ArmCont>controls/arm_aproach/left_prep1.cntr</ArmCont>
+    <HandCont>controls/hand_pick/madar_prepare_1.cntr</HandCont>
+    <InitControls>0.45 0.58 0.13 0.5 0.5 0.7</InitControls>
+    <GoalControls>0.293 0.451 0.447 0.534 0.65 0.628</GoalControls>
     <Regioncontrols>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</Regioncontrols>
     <Graspcontrols>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</Graspcontrols>
-    <GlassPosition>0.286 0.47 0.429 0.470 0.65 0.628</GlassPosition>
-</Preparedrink>
+    <GlassPosition>0.229 0.391 0.447 0.5 0.737 0.861</GlassPosition>
+</Prepare_drink>
 
-
-
-  </Actions>
+</Actions>
 
 </Config>

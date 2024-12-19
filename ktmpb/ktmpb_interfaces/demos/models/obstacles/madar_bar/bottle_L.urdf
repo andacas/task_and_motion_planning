@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="bottle_L">
+<robot name="bottle">
 	<link name="base">
 	<inertial>
         	 <origin xyz="0 0 0" rpy="0 0 0"/>

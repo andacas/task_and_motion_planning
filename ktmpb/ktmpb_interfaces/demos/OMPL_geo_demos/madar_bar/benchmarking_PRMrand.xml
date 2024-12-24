@@ -1,0 +1,11 @@
+<Benchmark Name="experiment">
+	<Problem File="OMPL_PRM_madar_case_move_a_b_r_dthr20.xml" PlannerAlias="PRMrand20"/>
+	<Problem File="OMPL_PRM_madar_case_move_a_b_r_dthr30.xml" PlannerAlias="PRMrand30"/>
+	<Problem File="OMPL_PRM_madar_case_move_a_b_r_dthr40.xml" PlannerAlias="PRMrand40"/>
+	<Problem File="OMPL_PRM_madar_case_move_a_b_r_dthr50.xml" PlannerAlias="PRMrand50"/>
+	<Parameter Name="maxTime" Value="120.0" />
+	<Parameter Name="maxMem" Value="8000.0" />
+	<Parameter Name="runCount" Value="10" />
+	<Parameter Name="displayProgress" Value="false" />
+	<Parameter Name="filename" Value="resultPRMrand.log" />
+</Benchmark>

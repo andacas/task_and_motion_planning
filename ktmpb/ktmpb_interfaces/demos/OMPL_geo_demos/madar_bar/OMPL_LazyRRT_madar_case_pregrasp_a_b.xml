@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<Problem name="OMPL_RRTConnect_table_rooms">
+	<Robot robot="robots/madar/madar.urdf" scale="50.0">
+		<Limits name="X" min="-140.0" max="140.0" />
+		<Limits name="Y" min="-140.0" max="140.0" />
+		<Limits name="Z" min="0.0" max="0.0" />
+		<Home X="0.0" Y="0.0" Z="0.0" WX="0.0" WY="0.0" WZ="1.0" TH="0.0" />
+	</Robot>
+	<Obstacle obstacle="obstacles/madar_bar/madar_case.urdf" scale="50">
+		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="0.0" Y="0" X="0" />
+	</Obstacle>
+	<Obstacle obstacle="obstacles/madar_bar/glass1.urdf" scale="50">
+		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="73.5" Y="110.0" X="60.0" />
+	</Obstacle>
+	<Obstacle obstacle="obstacles/madar_bar/glass2.urdf" scale="50">
+		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="73.5" Y="110.0" X="75.0" />
+	</Obstacle>
+	<Obstacle obstacle="obstacles/madar_bar/glass3.urdf" scale="50">
+		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="43.5" Y="110.0" X="60.0" />
+	</Obstacle>
+	<Obstacle obstacle="obstacles/madar_bar/glass4.urdf" scale="50">
+		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="43.5" Y="110.0" X="75.0" />
+	</Obstacle>
+	<Obstacle obstacle="obstacles/madar_bar/bottle_L.urdf" scale="2">
+		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="43.5" Y="-20.0" X="130.0" />
+	</Obstacle>
+	<Obstacle obstacle="obstacles/madar_bar/bottle_R.urdf" scale="2">
+		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="43.5" Y="-100.0" X="130.0" />
+	</Obstacle>
+	<Controls robot="controls/madar_both_arms.cntr" />
+	<Planner>
+		<Parameters>
+			<Name>omplLazyRRT</Name>
+			<Parameter name="Goal Bias">0.05000000075</Parameter>
+			<Parameter name="Range">5</Parameter>
+			<Parameter name="_Cspace Drawn">0</Parameter>
+			<Parameter name="_Incremental (0/1)">0</Parameter>
+			<Parameter name="_Max Planning Time">120</Parameter>
+			<Parameter name="_Path Drawn (0/1)">1</Parameter>
+			<Parameter name="_Simplify Solution">0</Parameter>
+			<Parameter name="_Speed Factor">5</Parameter>
+		</Parameters>
+		<Queries>
+			<Query>
+				<Init dim="12">0.55 0.5 0.87 0.25 0.45 0.25 0.45 0.58 0.13 0.5 0.5 0.7</Init>
+				<Goal dim="12">0.741 0.906 0.335 0.244 0.241 0.436 0.338 0.477 0.293 0.541 0.688 0.624</Goal>
+			</Query>
+		</Queries>
+	</Planner>
+</Problem>

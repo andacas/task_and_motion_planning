@@ -1,0 +1,9 @@
+<Benchmark Name="experiment">
+	<Problem File="OMPL_RRTconnect_madar_case_move_a_b_range1.xml" PlannerAlias="RRTconn1"/>
+	<Problem File="OMPL_LazyRRT_madar_case_move_a_b_range5.xml" PlannerAlias="LazyRRT5"/>
+	<Parameter Name="maxTime" Value="120.0" />
+	<Parameter Name="maxMem" Value="8000.0" />
+	<Parameter Name="runCount" Value="30" />
+	<Parameter Name="displayProgress" Value="true" />
+	<Parameter Name="filename" Value="resultmove.log" />
+</Benchmark>

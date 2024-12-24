@@ -1,0 +1,11 @@
+<Benchmark Name="experiment">
+	<Problem File="OMPL_RRTconnect_madar_case_pregrasp_left_a_b_range0_5.xml" PlannerAlias="RRTconn0_5"/>
+	<Problem File="OMPL_RRTconnect_madar_case_pregrasp_left_a_b_range1.xml" PlannerAlias="RRTconn1"/>
+	<Problem File="OMPL_RRTconnect_madar_case_pregrasp_left_a_b_range1_5.xml" PlannerAlias="RRTconn1_5"/>
+	<Problem File="OMPL_RRTconnect_madar_case_pregrasp_left_a_b_range2.xml" PlannerAlias="RRTconn2"/>
+	<Parameter Name="maxTime" Value="120.0" />
+	<Parameter Name="maxMem" Value="8000.0" />
+	<Parameter Name="runCount" Value="10" />
+	<Parameter Name="displayProgress" Value="false" />
+	<Parameter Name="filename" Value="resultRRTconn_pregrasp_left.log" />
+</Benchmark>

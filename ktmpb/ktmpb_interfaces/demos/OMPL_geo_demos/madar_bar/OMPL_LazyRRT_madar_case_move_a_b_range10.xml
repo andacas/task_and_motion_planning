@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<Problem name="OMPL_RRTConnect_table_rooms">
+	<Robot robot="robots/madar/madar.urdf" scale="50.0">
+		<Limits name="X" min="-140.0" max="140.0" />
+		<Limits name="Y" min="-140.0" max="140.0" />
+		<Limits name="Z" min="0.0" max="0.0" />
+		<Home X="0.0" Y="0.0" Z="0.0" WX="0.0" WY="0.0" WZ="1.0" TH="0.0" />
+	</Robot>
+	<Obstacle obstacle="obstacles/madar_bar/madar_case.urdf" scale="50">
+		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="0.0" Y="0" X="0" />
+	</Obstacle>
+	<Obstacle obstacle="obstacles/madar_bar/glass1.urdf" scale="50">
+		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="73.5" Y="110.0" X="60.0" />
+	</Obstacle>
+	<Obstacle obstacle="obstacles/madar_bar/glass2.urdf" scale="50">
+		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="73.5" Y="110.0" X="75.0" />
+	</Obstacle>
+	<Obstacle obstacle="obstacles/madar_bar/glass3.urdf" scale="50">
+		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="43.5" Y="110.0" X="60.0" />
+	</Obstacle>
+	<Obstacle obstacle="obstacles/madar_bar/glass4.urdf" scale="50">
+		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="43.5" Y="110.0" X="75.0" />
+	</Obstacle>
+	<Obstacle obstacle="obstacles/madar_bar/bottle_L.urdf" scale="2">
+		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="43.5" Y="-20.0" X="130.0" />
+	</Obstacle>
+	<Obstacle obstacle="obstacles/madar_bar/bottle_R.urdf" scale="2">
+		<Home TH="0" WZ="0.0" WY="0.0" WX="0.0" Z="43.5" Y="-100.0" X="130.0" />
+	</Obstacle>
+	<Controls robot="controls/madar_R2.cntr" />
+	<Planner>
+		<Parameters>
+			<Name>omplLazyRRT</Name>
+			<Parameter name="Goal Bias">0.05000000075</Parameter>
+			<Parameter name="Range">10</Parameter>
+			<Parameter name="_Cspace Drawn">0</Parameter>
+			<Parameter name="_Incremental (0/1)">0</Parameter>
+			<Parameter name="_Max Planning Time">120</Parameter>
+			<Parameter name="_Path Drawn (0/1)">1</Parameter>
+			<Parameter name="_Simplify Solution">0</Parameter>
+			<Parameter name="_Speed Factor">5</Parameter>
+		</Parameters>
+		<Queries>
+			<Query>
+				<Init dim="3">0.5 0.5 0.5</Init>
+				<Goal dim="3">0.3 0.75 0.5</Goal>
+			</Query>
+		</Queries>
+	</Planner>
+</Problem>

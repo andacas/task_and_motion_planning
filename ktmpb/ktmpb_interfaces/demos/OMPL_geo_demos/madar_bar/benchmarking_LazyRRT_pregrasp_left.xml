@@ -1,0 +1,11 @@
+<Benchmark Name="experiment">
+	<Problem File="OMPL_LazyRRT_madar_case_pregrasp_left_a_b_range1.xml" PlannerAlias="LazyRRT1"/>
+	<Problem File="OMPL_LazyRRT_madar_case_pregrasp_left_a_b_range5.xml" PlannerAlias="LazyRRT5"/>
+	<Problem File="OMPL_LazyRRT_madar_case_pregrasp_left_a_b_range10.xml" PlannerAlias="LazyRRT10"/>
+	<Problem File="OMPL_LazyRRT_madar_case_pregrasp_left_a_b_range15.xml" PlannerAlias="LazyRRT15"/>
+	<Parameter Name="maxTime" Value="120.0" />
+	<Parameter Name="maxMem" Value="8000.0" />
+	<Parameter Name="runCount" Value="10" />
+	<Parameter Name="displayProgress" Value="true" />
+	<Parameter Name="filename" Value="resultLazyRRT_pregrasp_left.log" />
+</Benchmark>
